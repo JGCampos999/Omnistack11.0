@@ -8,11 +8,12 @@ import api from '../../services/api'
 
 export default function Logon() {
     const [id, setId] = useState('')
+    const [password, setPassword] = useState('')
     const history = useHistory()
     async function handleLogin(e) {
         e.preventDefault()
         try {
-            const response = await api.post('sessions', { id })
+            const response = await api.post('sessions', { id, password })
             localStorage.setItem('ongId', id)
             localStorage.setItem('ongName', response.data.name)
 
@@ -31,7 +32,14 @@ export default function Logon() {
                         placeholder="Sua ID"
                         value={id}
                         onChange={e => setId(e.target.value)}
-                        />
+                    />
+                    <input
+                        type="password"
+                        placeholder="Sua Senha"
+                        required
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
                     <button className="button" type="submit">Entrar</button>
                     <Link to="/register" className="back-link">
                         <FiLogIn size={16} color="#e02041" />

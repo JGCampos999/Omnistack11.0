@@ -10,11 +10,13 @@ export default function Register() {
     const [whatsapp, setWhatsapp] = useState('')
     const [city, setCity] = useState('')
     const [uf, setUf] = useState('')
+    const [password, setPassword] = useState('')
 
     const history = useHistory()
     async function handleRegister(e) {
         e.preventDefault()
         const data = {
+            password,
             name,
             email,
             whatsapp,
@@ -64,9 +66,19 @@ export default function Register() {
                         <input
                             placeholder="UF"
                             style={{ width: 80 }}
+                            maxLength='2'
                             value={uf}
                             onChange={e => setUf(e.target.value)} />
                     </div>
+                    <input
+                        type="password"
+                        placeholder="Senha"
+                        required
+                        minLength='6'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        pattern='.*\S.*'
+                    />
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
