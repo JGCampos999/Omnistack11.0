@@ -50,7 +50,6 @@ export default function Register() {
                         onChange={e => setName(e.target.value)}
                     />
                     <input
-                        type="email"
                         placeholder="E-mail"
                         value={email}
                         onChange={e => setEmail(e.target.value)} />
@@ -66,18 +65,14 @@ export default function Register() {
                         <input
                             placeholder="UF"
                             style={{ width: 80 }}
-                            maxLength='2'
                             value={uf}
                             onChange={e => setUf(e.target.value)} />
                     </div>
                     <input
                         type="password"
                         placeholder="Senha"
-                        required
-                        minLength='6'
                         value={password}
                         onChange={e => setPassword(e.target.value)}
-                        pattern='.*\S.*'
                     />
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
